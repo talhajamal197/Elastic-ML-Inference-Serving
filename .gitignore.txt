@@ -1,0 +1,2 @@
+ML-Inference\.venv
+ML-Inference\.idea
