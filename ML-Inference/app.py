@@ -20,6 +20,10 @@ def predict_endpoint():
     except IOError:
         return jsonify({'error': 'Cannot open image'}), 400
 
+@app.route('/', methods=['GET'])
+def hello_endpoint():
+    return('Hello world')
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
