@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ml-inference-app
-  labels:
-    app: ml-inference-app
 spec:
-  replicas: 2 # Number of desired pods
+  replicas: 2
   selector:
     matchLabels:
       app: ml-inference-app
@@ -16,6 +14,7 @@ spec:
     spec:
       containers:
       - name: ml-inference-app
-        image: cloud-project:latest
+        image: app2:latest
+        imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
