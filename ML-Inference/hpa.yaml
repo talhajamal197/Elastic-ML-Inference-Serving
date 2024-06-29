@@ -10,4 +10,12 @@ spec:
     name: ml-inference-app
   minReplicas: 2
   maxReplicas: 10
+  metrics:
+  - type: Pods
+    pods:
+      metric:
+        name: custom_metric
+      target:
+        type: AverageValue
+        averageValue: 100m
   targetCPUUtilizationPercentage: 50
