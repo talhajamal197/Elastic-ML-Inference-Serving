@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ml-inference-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ml-inference-app
@@ -11,10 +11,14 @@ spec:
     metadata:
       labels:
         app: ml-inference-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "8080"
     spec:
       containers:
       - name: ml-inference-app
-        image: app2:latest
+        image: app:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

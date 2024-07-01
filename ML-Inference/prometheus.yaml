@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: prometheus-server
+  name: prometheus-config
   namespace: monitoring
 data:
   prometheus.yml: |
     global:
       scrape_interval: 15s
     scrape_configs:
-      - job_name: 'prometheus'
+      - job_name: 'your-app'
         static_configs:
-          - targets: ['localhost:9090']
-      - job_name: 'ml-inference-app'
-        static_configs:
-          - targets: ['ml-inference-app-service.default.svc.cluster.local:8000']
+        - targets: ['your-app-service.default.svc.cluster.local:80']
